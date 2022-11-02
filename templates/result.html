@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册结果</title>
+</head>
+<body>
+<h1>注册成功！</h1>
+{% if is_send %}
+    <p>请查阅邮件！若5分钟后仍未接收到，请单击 <a href="{{ url_for('index') }}">再次发送</a></p>
+  {% endif %}
+</body>
+</html>

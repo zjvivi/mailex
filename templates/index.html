@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新用户注册</title>
+</head>
+<body>
+<form method="post">
+     <!--隐藏字段，保障flask—wtf的csrf防护机制使用-->
+    {{ form.hidden_tag() }}
+    <!--id用于给name字段一个属性，便于后续修改css样式-->
+    {{ form.name.label }}{{ form.name(id='my-name') }}
+    {{ form.submit() }}
+</form>
+</body>
+</html>
