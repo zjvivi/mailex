@@ -12,17 +12,10 @@ app.config['SECRET_KEY'] = 'mail ex'
 app.config['MAIL_SERVER'] = 'smtp.126.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True  # 启用安全套接层协议
-app.config['MAIL_USERNAME'] = 'zjvivi@126.com'
-app.config['MAIL_PASSWORD'] = 'PFVMVDETHIYXJNLN'
-# app.config['MAIL_USE_TLS'] = True  # 启用传输层安全协议
-# app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-# app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
 
-# app.config['FLASKY_MAIL_SUBJECT_PREFIX'] = '[course]'
-# app.config['FLASKY_MAIL_SENDER'] = 'zjvivi@126.com'
-# app.config['FLASKY_ADMIN'] = os.environ.get('FLASKY_ADMIN')
-# app.config['FLASKY_ADMIN']='zjvivi@126.com'
 
 mail = Mail(app)
 
@@ -63,7 +56,7 @@ def index():
     if form.validate_on_submit():
         user = {'username': form.name.data}
         if app.config['MAIL_USERNAME']:
-            send_email(user['username'], 'New User', 'mail/new_user', user=user)
+            send_email(user['username'], '新用户', 'mail/new_user', user=user)
             session['is_send'] = True
             form.name.data = ''
             return render_template('result.html',is_send=session.get('is_send'))
